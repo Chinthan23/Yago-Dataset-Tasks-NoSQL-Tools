@@ -1,0 +1,157 @@
+DROP TABLE IF EXISTS yago_part;
+
+CREATE TABLE yago_part(
+	subject STRING, 
+	predicate STRING, 
+	object STRING) 
+	PARTITIONED BY (pred STRING)
+	ROW FORMAT DELIMITED
+	FIELDS TERMINATED BY ' '
+	LINES TERMINATED BY '\n'
+	STORED AS TEXTFILE 
+	LOCATION './yago_part';
+
+INSERT INTO yago_part PARTITION (pred='<actedIn>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<actedIn>';
+
+INSERT INTO yago_part PARTITION (pred='<hasAcademicAdvisor>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<hasAcademicAdvisor>';
+
+INSERT INTO yago_part PARTITION (pred='<hasChild>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<hasChild>';
+
+INSERT INTO yago_part PARTITION (pred='<hasFamilyName>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<hasFamilyName>';
+
+INSERT INTO yago_part PARTITION (pred='<hasWebsite>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<hasWebsite>';
+
+INSERT INTO yago_part PARTITION (pred='<hasWonPrize>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<hasWonPrize>';
+
+INSERT INTO yago_part PARTITION (pred='<isInterestedIn>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<isInterestedIn>';
+
+INSERT INTO yago_part PARTITION (pred='<isKnownFor>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<isKnownFor>';
+
+INSERT INTO yago_part PARTITION (pred='<directed>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<directed>';
+
+INSERT INTO yago_part PARTITION (pred='<edited>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<edited>';
+
+INSERT INTO yago_part PARTITION (pred='<graduatedFrom>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<graduatedFrom>';
+
+INSERT INTO yago_part PARTITION (pred='<hasGender>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<hasGender>';
+
+INSERT INTO yago_part PARTITION (pred='<hasMusicalRole>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<hasMusicalRole>';
+
+INSERT INTO yago_part PARTITION (pred='<isCitizenOf>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<isCitizenOf>';
+
+INSERT INTO yago_part PARTITION (pred='<isMarriedTo>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<isMarriedTo>';
+
+INSERT INTO yago_part PARTITION (pred='<isPoliticianOf>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<isPoliticianOf>';
+
+INSERT INTO yago_part PARTITION (pred='<playsFor>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<playsFor>';
+
+INSERT INTO yago_part PARTITION (pred='<worksAt>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<worksAt>';
+
+INSERT INTO yago_part PARTITION (pred='<wroteMusicFor>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<wroteMusicFor>';
+
+INSERT INTO yago_part PARTITION (pred='<created>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<created>';
+
+INSERT INTO yago_part PARTITION (pred='<diedIn>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<diedIn>';
+
+INSERT INTO yago_part PARTITION (pred='<hasGivenName>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<hasGivenName>';
+
+INSERT INTO yago_part PARTITION (pred='<influences>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<influences>';
+
+INSERT INTO yago_part PARTITION (pred='<isAffiliatedTo>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<isAffiliatedTo>';
+
+INSERT INTO yago_part PARTITION (pred='<isLeaderOf>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<isLeaderOf>';
+
+INSERT INTO yago_part PARTITION (pred='<livesIn>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<livesIn>';
+
+INSERT INTO yago_part PARTITION (pred='<owns>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<owns>';
+
+INSERT INTO yago_part PARTITION (pred='<participatedIn>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<participatedIn>';
+
+INSERT INTO yago_part PARTITION (pred='<wasBornIn>')
+SELECT subject, predicate, object
+FROM yago
+WHERE predicate='<wasBornIn>';

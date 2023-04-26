@@ -1,0 +1,1 @@
+SELECT predicate, COUNT(*) AS count FROM yago GROUP BY predicate SORT BY count DESC LIMIT 3;

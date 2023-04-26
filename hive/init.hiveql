@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS yago;
+
+CREATE TABLE yago(
+	subject STRING, 
+	predicate STRING, 
+	object STRING) 
+	ROW FORMAT DELIMITED
+	FIELDS TERMINATED BY ' '
+	LINES TERMINATED BY '\n'
+	STORED AS TEXTFILE 
+	LOCATION './yago';
+
+LOAD DATA LOCAL INPATH '../yago_full_clean.tsv' INTO TABLE yago;

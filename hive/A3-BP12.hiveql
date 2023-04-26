@@ -1,0 +1,12 @@
+SELECT hasgiven.object AS Object
+FROM (
+  SELECT subject,object
+  FROM yago
+  WHERE predicate = '<hasGivenName>'
+) AS hasgiven
+JOIN (
+  SELECT subject, COUNT(*) AS count
+  FROM yago
+  WHERE predicate = '<livesIn>' GROUP BY subject HAVING count>1
+) AS livesin
+ON (hasgiven.subject = livesin.subject);

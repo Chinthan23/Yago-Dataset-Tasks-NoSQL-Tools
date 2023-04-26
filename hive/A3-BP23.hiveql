@@ -1,0 +1,12 @@
+SELECT hasgiven.subject AS Subject, hasgiven.object, livesin.object
+FROM (
+  SELECT *
+  FROM yago
+  WHERE predicate = '<hasGivenName>'
+) AS hasgiven
+JOIN (
+  SELECT *
+  FROM yago
+  WHERE predicate = '<livesIn>'
+) AS livesin
+ON (hasgiven.subject = livesin.subject);
